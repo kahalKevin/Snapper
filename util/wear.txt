@@ -1,0 +1,7 @@
+Shoe:Sepatu
+Sandal:Sandal
+Jacket:Jaket
+Sweater:Sweater
+T-Shirt:Kaos
+Shirt:Kemeja
+Vest:Rompi

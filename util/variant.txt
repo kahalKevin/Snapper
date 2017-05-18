@@ -1,0 +1,22 @@
+Futsal:Futsal
+Casual:Kasual
+Sneakers:Sneakers
+Sneaker:Sneaker
+Futsal:Futsal
+Soccer:Sepak Bola
+Basket:Basket
+Boots:Boots
+Running:Running
+Wedges:Wedges
+Flat:Flat
+High Heels:High Heels
+Sport:Olahraga
+Slip On:Slip On
+Slop:Slop
+Hoodie:Hoodie
+Zipper:Zipper
+Band:Band
+Jersey:Jersey
+Flannel:Flannel
+Formal:Formal
+Bomber:Bomber

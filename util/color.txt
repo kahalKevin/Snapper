@@ -1,0 +1,11 @@
+Black:Hitam
+White:Putih
+Gray:Abu
+Brown:Coklat
+Red:Merah
+Blue:Biru
+Yellow:Kuning
+Green:Hijau
+Purple:Ungu
+Orange:Orange
+Pink:Pink
