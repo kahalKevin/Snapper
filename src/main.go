@@ -62,11 +62,16 @@ func giveLabel(w http.ResponseWriter, r *http.Request){
 	// json.NewDecoder(resp.Body).Decode(&webdec)
 	json.Unmarshal(body, &webdec)
 
+	var topBrand Pair
+	var topColor Pair
+	var topVariant Pair
+	var topWear Pair
+	
 	wg.Add(4)
-	topBrand := findBrand(webdec)
-	topColor := findColor(webdec)
-	topVariant := findVariant(webdec)
-	topWear := findWear(webdec)
+	go func(){topBrand = findBrand(webdec)}()
+	go func(){topColor = findColor(webdec)}()
+	go func(){topVariant = findVariant(webdec)}()
+	go func(){topWear = findWear(webdec)}()
 	wg.Wait()
 
 	assembled := assembleKeyword(topBrand, topColor, topVariant, topWear)
