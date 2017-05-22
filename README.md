@@ -21,7 +21,7 @@ $ go install
 $ cd {projectroot}/bin
 ```
 ```shell
-$ cd ./{buildname}
+$ ./{buildname}
 ```
 It will run on port 8000
 
