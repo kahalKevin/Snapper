@@ -121,6 +121,7 @@ make sure the header content type is JSON
 ```
 
 ## Output Sample
+```console
 {
   "pairs": [
     {
@@ -141,3 +142,4 @@ make sure the header content type is JSON
     }
   ]
 }
+```
