@@ -10,7 +10,15 @@ import (
 	"bufio"
 	"strings"
 	"sync"
+	"database/sql"
+	"runtime"
+	"time"
+	"strconv"
+
+	_ "github.com/go-sql-driver/mysql"
 )
+
+var Db *sql.DB //For database things
 
 type WebEntity struct {
     EntityId        string		`json:"entityId"`
@@ -38,9 +46,27 @@ type ResultForApp struct{
 	AllPair		Pairs 		`json:"pairs"`
 }
 
+type Behaviour struct{
+	Jenis 		string 		`jenis`
+	Merk 		string 		`merk`
+	Waktu		time.Time 	`waktu`
+}
+type Behaviours []Behaviour
+
+func init() {
+    runtime.GOMAXPROCS(runtime.NumCPU())
+
+	var err error
+	Db, err = sql.Open("mysql", "root:mel@tcp(127.0.0.1:3306)/snapper?parseTime=true")
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
 func main() {
 	loadMeta()
 	http.HandleFunc("/label", giveLabel)
+	http.HandleFunc("/behaviour", getBehaviourByWeeks)
 	http.ListenAndServe(":8000", nil)
 }
 
@@ -77,6 +103,9 @@ func giveLabel(w http.ResponseWriter, r *http.Request){
 	assembled := assembleKeyword(topBrand, topColor, topVariant, topWear)
 	result := ResultForApp{
 		AllPair: 	assembled}
+
+	if(topBrand.Keyword!="" || topColor.Keyword!=""){
+		go logSearchBehaviour(topWear.Keyword,topBrand.Keyword)}
 
 	log.Printf("result: %v", result)
 	json.NewEncoder(w).Encode(result)
@@ -258,4 +287,58 @@ func stringIsInSlice(a string, list []string) bool {
         }
     }
     return false
+}
+
+func getBehaviourByWeeks(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	var weeks uint32
+	week_in_string := r.URL.Query().Get("weeks")
+	if len(week_in_string) != 0 {
+	    if week_converted, err := strconv.ParseUint(week_in_string,10,32); err == nil {
+		    weeks = uint32(week_converted)
+		}else{
+			weeks = 1
+		}
+	}else{
+		weeks = 1
+	}
+
+	err := Db.Ping()
+	if err != nil {
+		return
+	}
+	query_behaviour_by_week := `SELECT jenis, merk , datetime
+							    FROM log_behaviour
+								WHERE datetime>=(DATE_SUB(NOW(), INTERVAL ` +strconv.Itoa(int(7*weeks))+ ` DAY))`
+
+	rows, err := Db.Query(query_behaviour_by_week)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	var _Bhvs Behaviours
+	var bhv1 Behaviour
+	for rows.Next() {
+		err := rows.Scan(&bhv1.Jenis, &bhv1.Merk, &bhv1.Waktu)
+		if err != nil {
+			log.Fatal(err)
+		}
+		log.Println(bhv1)
+		_Bhvs = append(_Bhvs, bhv1)
+	}
+	json.NewEncoder(w).Encode(_Bhvs)
+}
+
+func logSearchBehaviour(jenis string, merk string){
+	err := Db.Ping()
+	if err != nil {
+		return
+	}
+	query_insert := "insert into log_behaviour(`jenis`, `merk`) values ('"+jenis+"', '"+merk+"')"
+	_, err = Db.Exec(query_insert)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
