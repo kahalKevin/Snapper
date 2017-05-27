@@ -25,7 +25,7 @@ $ ./{buildname}
 ```
 It will run on port 8000
 
-## Input Sample
+## Input Sample Label
 endpoint `localhost:8000/label` POST
 make sure the header content type is JSON
 ```console
@@ -143,3 +143,38 @@ make sure the header content type is JSON
   ]
 }
 ```
+
+
+## Input Sample Behaviour
+endpoint `localhost:8000/behaviour` GET
+need 1 variable `weeks` to get how many weeks from today the behaviour will be gathered 
+`weeks` is integer
+127.0.0.1:8000/behaviour?weeks=2
+
+## Output Sample
+```console
+[
+  {
+    "Jenis": "Sepatu",
+    "Merk": "Adidas",
+    "Waktu": "2017-05-27T10:30:36Z"
+  },
+  {
+    "Jenis": "",
+    "Merk": "Adidas",
+    "Waktu": "2017-05-27T10:31:42Z"
+  },
+  {
+    "Jenis": "",
+    "Merk": "Adidas",
+    "Waktu": "2017-05-27T11:56:58Z"
+  },
+  {
+    "Jenis": "Sepatu",
+    "Merk": "Nike",
+    "Waktu": "2017-05-27T11:57:29Z"
+  }
+]
+```
+
+
