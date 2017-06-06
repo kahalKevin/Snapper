@@ -15,7 +15,9 @@ import (
 	"time"
 	"strconv"
 
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/go-sql-driver/mysql"	
+	instagot "github.com/kahalKevin/instagot"
+	gotrends "github.com/kahalKevin/gotrends/gotrends"
 )
 
 var Db *sql.DB //For database things
@@ -67,6 +69,7 @@ func main() {
 	loadMeta()
 	http.HandleFunc("/label", giveLabel)
 	http.HandleFunc("/behaviour", getBehaviourByWeeks)
+	http.HandleFunc("/image", GetImage)
 	http.ListenAndServe(":8000", nil)
 }
 
@@ -103,6 +106,18 @@ func giveLabel(w http.ResponseWriter, r *http.Request){
 	assembled := assembleKeyword(topBrand, topColor, topVariant, topWear)
 	result := ResultForApp{
 		AllPair: 	assembled}
+
+	if result.AllPair == nil {
+		log.Println("Using google trends")
+		topScore := findTopScore(webdec)
+		gotrendWord, gotrendScore := gotrends.SearchWithKeyword(topScore.Keyword)
+		gotrendPair:= Pair{
+			Keyword: 	gotrendWord,
+			Score: 		float32(gotrendScore)}
+		_tempAllPair := result.AllPair
+		_tempAllPair = append(_tempAllPair, gotrendPair)
+		result.AllPair = _tempAllPair
+	}
 
 	if(topBrand.Keyword!="" || topColor.Keyword!=""){
 		go logSearchBehaviour(topWear.Keyword,topBrand.Keyword)}
@@ -146,6 +161,20 @@ func assembleKeyword(topBrand Pair, topColor Pair, topVariant Pair, topWear Pair
 	}
 
 	return assembled
+}
+
+func findTopScore(webdec WebDetection) Pair{
+	topScore := Pair{
+		Keyword: 	"",
+		Score: 		0}
+
+	for no := range webdec.WebEnt {
+		if webdec.WebEnt[no].Score > topScore.Score {
+			topScore.Keyword = webdec.WebEnt[no].Description
+			topScore.Score = webdec.WebEnt[no].Score
+		}
+	}
+	return topScore
 }
 
 func findBrand(webdec WebDetection) Pair{
@@ -341,4 +370,11 @@ func logSearchBehaviour(jenis string, merk string){
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func GetImage(w http.ResponseWriter, r *http.Request){
+	log.Println("Getting image from Instagram")
+	ig_url := r.URL.Query().Get("ig_url")
+	img := instagot.GetImage(ig_url)
+	instagot.WriteImageToResponseWriter(w, &img)
 }
