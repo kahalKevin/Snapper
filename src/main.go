@@ -29,7 +29,7 @@ type WebEntity struct {
 }
 type WebEntities []WebEntity
 type WebDetection struct {
-	WebEnt 		WebEntities			`json:"webEntities"`
+	WebEnt 		WebEntities		`json:"webEntities"`
 }
 
 var wg sync.WaitGroup
@@ -55,6 +55,10 @@ type Behaviour struct{
 }
 type Behaviours []Behaviour
 
+type IG_url struct{
+	Image_url 		string  	`json:"image_url"`
+}
+
 func init() {
     runtime.GOMAXPROCS(runtime.NumCPU())
 
@@ -70,6 +74,7 @@ func main() {
 	http.HandleFunc("/label", giveLabel)
 	http.HandleFunc("/behaviour", getBehaviourByWeeks)
 	http.HandleFunc("/image", GetImage)
+	http.HandleFunc("/urlimage", GetUrlImage)	
 	http.ListenAndServe(":8000", nil)
 }
 
@@ -132,6 +137,8 @@ func assembleKeyword(topBrand Pair, topColor Pair, topVariant Pair, topWear Pair
 	var detailedB Pair
 	var detailedC Pair
 	var detailedD Pair
+	var detailedE Pair
+		
 	if(topBrand.Score>0 && topColor.Score>0 && topVariant.Score>0 && topWear.Score>0){
 		detailedA.Score = (topBrand.Score + topColor.Score + topVariant.Score + topWear.Score)/4
 		detailedA.Keyword = topBrand.Keyword + " " + topColor.Keyword + " " + topVariant.Keyword + " " + topWear.Keyword
@@ -158,6 +165,21 @@ func assembleKeyword(topBrand Pair, topColor Pair, topVariant Pair, topWear Pair
 		detailedD.Keyword = topVariant.Keyword + " " + topWear.Keyword
 
 		assembled = append(assembled,detailedD)
+	}
+
+	if(topVariant.Score>0 && topBrand.Score>0){
+		detailedE.Score = (topVariant.Score + topBrand.Score)/2
+		detailedE.Keyword = topVariant.Keyword + " " + topBrand.Keyword
+
+		assembled = append(assembled,detailedE)
+	}
+
+	if(topBrand.Score>0 && detailedC==Pair{} && detailedE==Pair{}){
+		assembled = append(assembled,topBrand)
+	}
+
+	if(topWear.Score>0 && detailedC==Pair{} && detailedD==Pair{}){
+		assembled = append(assembled,topWear)
 	}
 
 	return assembled
@@ -377,4 +399,15 @@ func GetImage(w http.ResponseWriter, r *http.Request){
 	ig_url := r.URL.Query().Get("ig_url")
 	img := instagot.GetImage(ig_url)
 	instagot.WriteImageToResponseWriter(w, &img)
+}
+
+func GetUrlImage(w http.ResponseWriter, r *http.Request){
+	log.Println("Getting image url from Instagram")
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	ig_url := r.URL.Query().Get("ig_url")
+	img_url := instagot.GetUrlImage(ig_url)
+
+	json.NewEncoder(w).Encode(
+		IG_url{Image_url: 	img_url})
 }
