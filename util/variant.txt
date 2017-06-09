@@ -40,3 +40,65 @@ Leather jacket:Kulit
 Cotton:Katun
 Music:Musik
 Hijab:Hijab
+Waist:Pinggang
+Messenger bag:Selempang
+Backpack:Ransel
+Woman:Wanita
+Handbag:Handbag
+Clutch:Clutch
+Eating:Makan
+Wood:Kayu
+Office chair:Kantor
+Acoustic guitar:Akustik
+Electric guitar:Elektrik
+Acoustic-electric guitar:Akustik Elektrik
+Bass guitar:Bass
+G-Shock:G-Shock
+Chronograph:Chronograph
+Samsung Galaxy S5:Galaxy S5
+Samsung Galaxy S6:Galaxy S6
+Samsung Galaxy S6 Edge:Galaxy S6 Edge
+Samsung Galaxy S7:Galaxy S7
+Samsung GALAXY S7 Edge:GALAXY S7 Edge
+Samsung Galaxy S8:Galaxy S8
+Samsung Galaxy J2:Galaxy J2
+Samsung Galaxy J3:Galaxy J3
+Samsung Galaxy J5:Galaxy J5
+Samsung Galaxy J7:Galaxy J7
+Samsung Galaxy A5:Galaxy A5
+Samsung Galaxy A5:Galaxy A3
+Samsung Galaxy A5:Galaxy A7
+LG G5:G6
+LG G5:G5
+LG G5:G4
+Nexus 6P:Nexus 6P
+Nexus 5X:Nexus 5X
+Nexus 5:Nexus 5
+OPPO Electronics:Oppo
+Vivo Smartphone:Vivo
+Xiaomi Redmi Note 4:Redmi Note 4
+Xiaomi Redmi Note 3:Redmi Note 3
+Xiaomi Redmi Note 2:Redmi Note 2
+Xiaomi Mi4:Mi5
+Xiaomi Mi4:Mi4
+iPhone 6:6
+iPhone 6+:6+
+iPhone 5s:5s
+iPhone 6S:6S
+iPhone 5:5
+iPhone 7:7
+iPad 4:4
+iPad 3:3
+iPad 2:2
+iPad Air:Air
+iPad Mini:Mini
+Intel Core i3:i3
+Intel Core i5:i5
+Intel Core i7:i7
+MacBook Pro:Pro
+MacBook Air:Air
+Gaming computer:Gaming
+Digital SLR:Digital
+Nikon D7200:D7200
+Nikon D7100:D7100
+Nikon D3400:D3400

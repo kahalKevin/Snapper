@@ -6,6 +6,7 @@ Jacket:Jaket
 Sweater:Sweater
 T-Shirt:Kaos
 Shirt:Kemeja
+Polo shirt:Kaos Polo
 Vest:Vest
 Blouse:Blouse
 Dress:Dress
@@ -23,3 +24,24 @@ Cap:Topi
 Knit cap:Kupluk
 Skirt:Rok
 Gown:Gaun
+Helicopter:Quadcopter
+Quadcopter:Quadcopter
+Drone:Quadcopter
+Bag:Tas
+Wallet:Dompet
+Table:Meja
+Chair:Kursi
+Wardrobe:Lemari
+Bowl:Bekal
+Bottle:Botol
+Guitar:Gitar
+Digital piano:Piano Digital
+Musical keyboard:Keyboard
+Piano:Piano
+Synthesizer:Synthesizer
+Clock:Jam Dinding
+Watch:Jam Tangan
+Smartphone:Smartphone
+Mobile phone:Smartphone
+Laptop:Laptop
+Camera:Kamera
