@@ -68,9 +68,9 @@ Samsung Galaxy J7:Galaxy J7
 Samsung Galaxy A5:Galaxy A5
 Samsung Galaxy A5:Galaxy A3
 Samsung Galaxy A5:Galaxy A7
-LG G5:G6
-LG G5:G5
-LG G5:G4
+LG G5:LG G6
+LG G5:LG G5
+LG G5:LG G4
 Nexus 6P:Nexus 6P
 Nexus 5X:Nexus 5X
 Nexus 5:Nexus 5
@@ -102,3 +102,5 @@ Digital SLR:Digital
 Nikon D7200:D7200
 Nikon D7100:D7100
 Nikon D3400:D3400
+Yamaha Corporation:Yamaha
+Roland Corporation:Roland

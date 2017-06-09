@@ -26,17 +26,12 @@ Diadora
 Crocs
 Charles & Keith
 Tupperware
-Yamaha
 Casio
 Fender
 Ibanez
-Yamaha Corporation
-Roland Corporation
-Roland
 Seiko
 Rolex
 Samsung
-LG Corp
 Xiaomi
 iPhone
 iPad
@@ -44,4 +39,3 @@ Asus
 MacBook
 Nikon
 Canon
-Canon Inc.
