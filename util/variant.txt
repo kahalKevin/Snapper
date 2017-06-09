@@ -4,14 +4,26 @@ Sneakers:Sneakers
 Sneaker:Sneaker
 Futsal:Futsal
 Soccer:Sepak Bola
+Football boot:Sepak Bola
+Football:Sepak Bola
 Basket:Basket
+Basketball:Basket
 Boots:Boots
+Boot:Boot
+Combat boot:Boot
+Hiking boot:Boot
 Running:Running
 Wedges:Wedges
+Wedge:Wedges
 Flat:Flat
-High Heels:High Heels
+Ballet flat:Flat
+High Heel:High Heel
+High Heels:High Heel
+High-heeled footwear:High Heel
 Sport:Olahraga
+Slip-on shoe:Slip On
 Slip On:Slip On
+Slipper:Slip On
 Slop:Slop
 Hoodie:Hoodie
 Zipper:Zipper
@@ -20,3 +32,11 @@ Jersey:Jersey
 Flannel:Flannel
 Formal:Formal
 Bomber:Bomber
+Denim:Denim
+Jeans:Jeans
+Chino cloth:Chino
+Leather:Kulit
+Leather jacket:Kulit
+Cotton:Katun
+Music:Musik
+Hijab:Hijab

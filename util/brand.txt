@@ -1,4 +1,5 @@
 Nike
+Vans
 Adidas
 Puma
 Reebok
@@ -18,5 +19,8 @@ North Star
 Converse
 Fladeo
 Quicksilver
+Quiksilver
 Fred Perry
 ZARA
+Diadora
+Crocs

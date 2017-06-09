@@ -9,3 +9,9 @@ Green:Hijau
 Purple:Ungu
 Orange:Orange
 Pink:Pink
+Gold:Gold
+Silver:Silver
+Maroon:Marun
+Navy:Navy
+Chocolate:Coklat
+Khaki:Khaki

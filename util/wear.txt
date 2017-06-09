@@ -1,7 +1,25 @@
 Shoe:Sepatu
+Shoes:Sepatu
 Sandal:Sandal
+Sandals:Sandal
 Jacket:Jaket
 Sweater:Sweater
 T-Shirt:Kaos
 Shirt:Kemeja
-Vest:Rompi
+Vest:Vest
+Blouse:Blouse
+Dress:Dress
+Slim-fit pants:Celana Slim Fit
+Pants:Celana
+Jeans:Celana
+Trousers:Celana Kain
+Chino cloth:Celana Chino
+Shorts:Celana Pendek
+Fidget spinner:Fidget spinner
+Fidget cube:Fidget cube
+Blazer:Blazer
+Hat:Topi
+Cap:Topi
+Knit cap:Kupluk
+Skirt:Rok
+Gown:Gaun
